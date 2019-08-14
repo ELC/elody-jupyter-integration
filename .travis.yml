@@ -1,0 +1,12 @@
+language: python
+
+dist: "xenial"
+python: "3.7"
+
+install:
+  - pip install lod-tools
+
+script: 
+  - lod-tools configure -e $ELODY_USER -p $ELODY_PASS
+  - lod-tools upload-rule -f "jupyter-ci/Rules/Demo-jupyter-integration-ci.json"
+  - lod-tools upload-program -r -n "Demo_jupyter_integration_ci" -f "jupyter-ci/Program"

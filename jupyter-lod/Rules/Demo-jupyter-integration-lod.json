@@ -1,0 +1,59 @@
+{
+    "name": "Demo-jupyter-integration-lod",
+    "description": "This Rule is for the jupyter integration demo with lod executing inside jupyter",
+    "dependencies": [{
+        "symbol": "demo_jupyter_integration_lod"
+    }],
+    "threshold": 1.0,
+    "trigger": {},
+    "actions": [{
+        "type": "create_option",
+        "name": "demo-jupyter-integration-lod",
+        "description": "This Option will ask the user for parameters, then execute Demo_jupyter_integration_lod with those parameters.",
+        "confidence": 1000.0,
+        "trigger": {},
+        "actions": [{
+            "type": "execute_program",
+            "program": "Demo_jupyter_integration_lod",
+            "arguments": {
+                "user_parameters_file": {
+                    "type": "variable",
+                    "var": "userParametersFile"
+                }
+            }
+        }],
+        "display": {
+            "must_always_be_shown": true,
+            "parameter_file_name": "userParametersFile",
+            "message_components": [{
+                    "type": "text",
+                    "text": "This example use elody inside Jupyter and returns a simple linear regression for some input points"
+                },
+                {
+                    "type": "option_parameter_selector",
+                    "name": "timeseries",
+                    "title": "Timeseries to predict",
+                    "description": "The timeseries, as a string of comma-separated values:",
+                    "value": {
+                        "type": "string",
+                        "default": "1.0, 2.0, 3.0"
+                    }
+                },
+                {
+                    "type": "option_parameter_selector",
+                    "name": "c",
+                    "title": "Number of elements to predict",
+                    "value": {
+                        "type": "int",
+                        "default": 5,
+                        "min": 1
+                    }
+                }
+            ],
+            "buttons": [{
+                "text": "Perform the prediction",
+                "style": "cta"
+            }]
+        }
+    }]
+}

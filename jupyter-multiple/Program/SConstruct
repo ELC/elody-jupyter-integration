@@ -1,0 +1,16 @@
+import os
+from nbflow.scons import setup
+
+from lod import lod
+
+object_manager = lod.get_object_manager()
+
+with lod.manager(suppress_exceptions_after_logging_them=False, redirect_stdout_to_log=True) as lod_manager:    
+    
+    lod.start_message().\
+        add_text("Starting Scons").\
+        finish()
+
+    env = Environment(ENV=os.environ)
+    setup(env, ["."], ARGUMENTS)
+    

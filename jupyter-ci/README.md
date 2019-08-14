@@ -1,0 +1,1 @@
+This example is identical to jupyter-matplotlib but it gets updated and uploaded automatically through CI

@@ -1,0 +1,5 @@
+lod
+numpy==1.16.1
+jupyter_contrib_nbextensions
+jupyter
+matplotlib
